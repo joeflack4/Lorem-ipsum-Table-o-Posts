@@ -1,0 +1,74 @@
+<!-- The Challenge - https://github.com/kyleondata/JsInterviewChallenge -->
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Table o' Posts</title>
+    
+	<meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  </head>
+
+
+  <body class="skin-blue" ng-app="app" ng-controller="tableOfPostsController">
+    <div class='container'> 
+  
+		<h1>Lorem ipsum Table &#39;o Posts</h1>
+	  
+		<form>
+		  <div class="form-group">
+			<div class="input-group">
+			  <div class="input-group-addon"><i class="fa fa-search"></i></div>
+			  <input type="text" class="form-control" placeholder="Search Posts" ng-model="searchPosts">
+			</div>
+		  </div>
+		</form>
+
+		<table id="posts-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		  <thead>
+			<tr>
+			  <th href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+				Post ID
+				<span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+				<span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+			  </th>
+			  <th href="#" ng-click="sortType = 'userId'; sortReverse = !sortReverse">
+				User ID
+				<span ng-show="sortType == 'userId' && !sortReverse" class="fa fa-caret-down"></span>
+				<span ng-show="sortType == 'userId' && sortReverse" class="fa fa-caret-up"></span>
+			  </th>
+			  <th href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+				Title
+				<span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+				<span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+			  </th>
+			  <th href="#" ng-click="sortType = 'body'; sortReverse = !sortReverse">
+				Body
+				<span ng-show="sortType == 'body' && !sortReverse" class="fa fa-caret-down"></span>
+				<span ng-show="sortType == 'body' && sortReverse" class="fa fa-caret-up"></span>
+			  </th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr ng-repeat="post in posts | orderBy:sortType:sortReverse | filter:searchPosts">
+			  <td>{{post.id}}</td>
+			  <td>{{post.userId}}</td>
+			  <td>{{post.title}}</td>
+			  <td>{{post.body}}</td>
+			</tr>
+		  </tbody>
+		</table>
+		
+	  </div>
+         
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="static/js/app.module.js"></script>
+	<script src="static/js/tableOfPostsController.js"></script>
+
+  </body>
+</html>
